@@ -9,6 +9,11 @@ function PhanTrang({ listSP, pageSize }) {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(0);
 
+  // Kiểm tra nếu listSP không phải là mảng hoặc là mảng rỗng
+  if (!Array.isArray(listSP) || listSP.length === 0) {
+    return <p className="no-results">Không có sản phẩm nào.</p>;
+  }
+
   const pageCount = Math.ceil(listSP.length / pageSize);
   const fromIndex = currentPage * pageSize;
   const toIndex = Math.min(fromIndex + pageSize, listSP.length);
@@ -22,10 +27,6 @@ function PhanTrang({ listSP, pageSize }) {
     dispatch(themSP(sp)); // Dispatch action to add item to cart
     console.log("Đã thêm sản phẩm vào giỏ hàng:", sp);
   };
-
-  if (listSP.length === 0) {
-    return <p className="no-results">Không có sản phẩm nào.</p>;
-  }
 
   return (
     <div>
@@ -48,6 +49,14 @@ function PhanTrang({ listSP, pageSize }) {
           onPageChange={handlePageClick}
           containerClassName={"pagination"}
           activeClassName={"active"}
+          pageClassName={"page-item"}
+          pageLinkClassName={"page-link"}
+          previousClassName={"page-item"}
+          previousLinkClassName={"page-link"}
+          nextClassName={"page-item"}
+          nextLinkClassName={"page-link"}
+          breakClassName={"page-item"}
+          breakLinkClassName={"page-link"}
         />
       )}
     </div>

@@ -1,12 +1,4 @@
-/* Thanh điều hướng */
-nav {
-  background: #ff4500;
-  height: 60px;
-  display: flex;
-  justify-content: space-between; /* Căn chỉnh các phần tử bên trong */
-  align-items: center;
-  padding: 0 20px; /* Thêm khoảng cách hai bên */
-}
+
 
 .nav-menu {
   list-style: none;

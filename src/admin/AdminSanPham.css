@@ -1,0 +1,107 @@
+.admin-san-pham-container {
+  padding: 20px;
+}
+
+.add-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.san-pham-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.san-pham-table th, .san-pham-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.san-pham-table th {
+  background-color: #f2f2f2;
+}
+
+.san-pham-img {
+  width: 50px;
+  height: auto;
+}
+
+.error-message {
+  color: red;
+}
+
+.action-button, .delete-button, .view-by-type-button {
+  background-color: #008CBA; /* Màu nền của nút */
+  color: white;
+  border: none;
+  padding: 3px 6px; /* Giảm padding để nút nhỏ hơn */
+  font-size: 12px; /* Có thể giảm kích thước font nếu cần */
+  cursor: pointer;
+  border-radius: 3px; /* Giảm độ cong của viền nếu cần */
+}
+
+
+.delete-button {
+  background-color: #f44336; /* Red for delete */
+}
+
+.view-by-type-button {
+  background-color: #4CAF50; /* Green for view by type */
+}
+/* AdminSanPham.css */
+
+/* Định dạng container phân trang */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Định dạng mỗi phần tử phân trang */
+.pagination li {
+  margin: 0 5px;
+}
+
+/* Định dạng các liên kết phân trang */
+.pagination li a {
+  display: block;
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  background-color: #fff;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Định dạng liên kết khi hover */
+.pagination li a:hover {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+/* Định dạng liên kết khi đang ở trạng thái active */
+.pagination .active a {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+  font-weight: bold;
+}
+
+/* Định dạng liên kết cho nút "Previous" và "Next" */
+.pagination .previous a,
+.pagination .next a {
+  font-weight: bold;
+}

@@ -11,13 +11,7 @@ a {
   text-decoration: none;
 }
 
-nav {
-  width: 100%;
-  background-color: #ff4500; /* Màu nền thanh menu */
-  color: white;
-  text-align: center; /* Căn giữa nội dung */
-  padding: 10px 0; /* Khoảng cách padding */
-}
+
 
 .nav-menu {
   list-style-type: none;

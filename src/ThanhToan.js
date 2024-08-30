@@ -1,23 +1,43 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import './ThanhToan.css';
 import { Link } from "react-router-dom";
 
 function ThanhToan() {
-  let htRef = React.createRef();
-  let emRef = React.createRef();
-  let sdtRef = React.createRef();
-  let vitriRef = React.createRef();
+  const [user, setUser] = useState({
+    ho_ten: '',
+    email: '',
+    sdt: ''
+  });
+
+  const htRef = useRef(null);
+  const emRef = useRef(null);
+  const sdtRef = useRef(null);
 
   const cart = useSelector(state => state.cart.listSP);
 
-  const submitDuLieu = () => {
-    let ht = htRef.current.value;
-    let em = emRef.current.value;
-    let sdt = sdtRef.current.value;
-    let vitri = vitriRef.current.value;
+  useEffect(() => {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      try {
+        const user = JSON.parse(userData);
+        setUser({
+          ho_ten: user.name || '',
+          email: user.email || '',
+          sdt: user.dien_thoai || ''
+        });
+      } catch (error) {
+        console.error('Error parsing user data:', error);
+      }
+    }
+  }, []);
 
-    if (ht === "" || em === "" || sdt === "" || vitri === "") {
+  const submitDuLieu = () => {
+    const ht = htRef.current.value;
+    const em = emRef.current.value;
+    const sdt = sdtRef.current.value;
+
+    if (ht === "" || em === "" || sdt === "") {
       alert('Nhập đủ thông tin bạn ơi');
       return;
     }
@@ -27,15 +47,14 @@ function ThanhToan() {
       return;
     }
 
-    let url = "http://localhost:3000/luudonhang";
-    let tt = {
+    const url = "http://localhost:3000/luudonhang";
+    const tt = {
       ho_ten: ht,
       email: em,
-      sdt: sdt,
-      vitri: vitri
+      sdt: sdt
     };
 
-    var opt = {
+    const opt = {
       method: "post",
       body: JSON.stringify(tt),
       headers: {
@@ -49,7 +68,7 @@ function ThanhToan() {
         if (data.id_dh < 0) {
           console.log("Lỗi lưu đơn hàng", data);
         } else {
-          let id_dh = data.id_dh;
+          const id_dh = data.id_dh;
           console.log("Đã lưu xong giỏ hàng");
           luuchitietdonhang(id_dh, cart);
         }
@@ -58,11 +77,11 @@ function ThanhToan() {
   };
 
   const luuchitietdonhang = (id_dh, cart) => {
-    let url = "http://localhost:3000/luugiohang";
+    const url = "http://localhost:3000/luugiohang";
 
     cart.forEach(sp => {
-      let t = { id_dh: id_dh, id_sp: sp.id, so_luong: sp.so_luong };
-      let opt = {
+      const t = { id_dh: id_dh, id_sp: sp.id, so_luong: sp.so_luong };
+      const opt = {
         method: "post",
         body: JSON.stringify(t),
         headers: { 'Content-Type': 'application/json' }
@@ -82,10 +101,9 @@ function ThanhToan() {
   return (
     <div>
       <div className="input-container">
-        <input type="text" ref={htRef} placeholder="Họ tên" />
-        <input type="text" ref={emRef} placeholder="Email" />
-        <input type="text" ref={sdtRef} placeholder="Số điện thoại" />
-        <input type="text" ref={vitriRef} placeholder="Vị trí" />
+        <input type="text" ref={htRef} defaultValue={user.ho_ten} placeholder="Họ tên" />
+        <input type="text" ref={emRef} defaultValue={user.email} placeholder="Email" />
+        <input type="text" ref={sdtRef} defaultValue={user.sdt} placeholder="Số điện thoại" />
       </div>
       <div className="button-container">
         <button onClick={submitDuLieu}><Link to="/donhang">Lưu đơn hàng</Link></button>

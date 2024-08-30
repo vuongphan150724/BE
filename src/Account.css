@@ -1,0 +1,45 @@
+/* Account.css */
+
+.account-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.account-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.account-container p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #555;
+}
+
+.account-container .info {
+  margin-bottom: 20px;
+}
+
+.account-container button {
+  background-color: #ff5722; /* Màu nền cam */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.account-container button:hover {
+  background-color: #e64a19; /* Màu cam đậm hơn khi hover */
+}
+
+.account-container .logout-button {
+  margin-top: 20px;
+}

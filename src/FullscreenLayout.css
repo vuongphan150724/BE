@@ -1,0 +1,9 @@
+/* FullscreenLayout.css */
+.fullscreen-layout {
+
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f0f0f0; /* Ví dụ về màu nền */
+}

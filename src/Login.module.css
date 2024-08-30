@@ -1,0 +1,54 @@
+/* LoginNew.module.css */
+.container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    padding: 20px;
+    margin: auto;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.formGroup {
+    margin-bottom: 15px;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.button {
+    flex: 1;
+    padding: 10px;
+    background-color: #ff4b2b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin: 0 5px;
+}
+
+.button:hover {
+    background-color: #ff6b6b;
+}
+
+.message {
+    margin-top: 10px;
+    font-size: 14px;
+}

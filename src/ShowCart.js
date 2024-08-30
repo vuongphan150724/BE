@@ -2,13 +2,24 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { suaSL, xoaSP, xoaGH } from "./cartSlice";
 import "./ShowCart.css";
-import { Link } from "react-router-dom";
-function ShowCart(props) {
+import { Link, useNavigate } from "react-router-dom";
+
+function ShowCart() {
   const cart = useSelector((state) => state.cart);
+  const isLoggedIn = !!localStorage.getItem('token'); // Kiểm tra trạng thái đăng nhập
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const calculateTotal = () => {
     return cart.listSP.reduce((total, sp) => total + sp.gia * sp.so_luong, 0);
+  };
+
+  const handleCheckout = () => {
+    if (!isLoggedIn) {
+      navigate('/login', { state: { from: '/thanhtoan' } });
+    } else {
+      navigate('/thanhtoan');
+    }
   };
 
   return (
@@ -58,7 +69,9 @@ function ShowCart(props) {
             Tổng cộng: {Number(calculateTotal()).toLocaleString("vi")} VNĐ
           </div>
           <div className="actions">
-            <button className="checkout-button"> <Link to='/thanhtoan'>Thanh toán</Link></button>
+            <button className="checkout-button" onClick={handleCheckout}>
+              Thanh toán
+            </button>
             <button className="clear-cart-button" onClick={() => dispatch(xoaGH())}>
               Xóa giỏ hàng
             </button>
